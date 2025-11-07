@@ -17,10 +17,9 @@ body {
 
 /* Logo */
 .logo {
-    width: 400px; /* tamanho do logo PRECISO MUDAR LEMBRA MENTE LEMBRA */
+   width: 250px; /* tamanho do logo PRECISO MUDAR LEMBRA MENTE LEMBRA */
     height: auto;
     border-radius: 10px;
-    
 }
 
 /* Navegação */
