@@ -189,6 +189,7 @@ h1 {
   gap: 36px;
   align-items: center;
   position: relative; /* para os elementos decorativos */
+  z-index: 0; /* cria contexto de empilhamento para permitir pseudo-elements atrás */
   overflow: hidden;
   box-shadow: 0 6px 30px rgba(0,0,0,0.06);
 }
@@ -205,6 +206,7 @@ h1 {
   opacity: 0.95;
   transform: rotate(-20deg);
   pointer-events: none;
+  z-index: -1; /* garante que as formas fiquem atrás do conteúdo */
 }
 
 /* canto superior esquerdo */
@@ -249,6 +251,8 @@ h1 {
   flex: 1; /* ocupa o resto do espaço */
   color: black;
   font-style: bolder;
+  position: relative;
+  z-index: 1; /* garante que o texto fique acima das formas decorativas */
 }
 
 /* título com estilo elegante */
@@ -272,10 +276,134 @@ h1 {
   text-align: justify;
 }
 
+/* Objetivos da Empresa */
 
 
+/* ---------- Founder Hero (layout imagem + texto) ---------- */
+.founder-hero {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+.founder-hero__image {
+  flex: 0 0 68%;
+  height: 520px;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0 6px 30px rgba(0,0,0,0.06);
+}
+.founder-hero__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.founder-hero__content {
+  flex: 0 0 32%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
+}
+.founder-title { margin: 0; padding: 0; font-family: "Playfair Display", serif; color: #111; font-weight: 400; font-style: italic; letter-spacing: 1px; line-height: 0.95; }
+.founder-title span { display: block; font-size: 56px; text-transform: uppercase; }
+.founder-lead { margin: 0; font-family: "Lora", serif; color: #333; font-size: 16px; line-height: 1.8; text-align: justify; }
+.founder-cta { display: inline-block; padding: 10px 18px; background: #111; color: #fff; text-decoration: none; font-weight: 700; border-radius: 4px; margin-top: 8px; letter-spacing: .6px; }
+.founder-title span:last-child { font-size: 42px; }
+
+@media (max-width: 900px) {
+  .founder-hero { flex-direction: column; gap: 18px; margin: 24px auto; }
+  .founder-hero__image { width: 100%; flex: 0 0 auto; height: 360px; border-radius: 6px; }
+  .founder-hero__content { width: 100%; flex: 0 0 auto; }
+  .founder-title span { font-size: 36px; line-height: 1; }
+  .founder-title span:last-child { font-size: 30px; }
+  .founder-lead { font-size: 15px; line-height: 1.6; text-align: left; }
+}
 
 
+/* Parte Sobre os Objetivos da empresa  */
+
+/* ---------- Founder Hero (layout imagem + texto) ---------- */
+.founder-hero {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+/* imagem grande à esquerda */
+.founder-hero__image {
+  flex: 0 0 68%;                 /* controla % ocupado pela imagem */
+  height: 520px;                 /* altura fixa no desktop */
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0 6px 30px rgba(0,0,0,0.06);
+}
+.founder-hero__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;             /* recorta mantendo proporção */
+  display: block;
+}
+
+/* coluna direita de texto */
+.founder-hero__content {
+  flex: 0 0 32%;                 /* coluna direita estreita */
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+/* título com cada palavra em linha separada */
+.founder-title {
+  margin: 0;
+  padding: 0;
+  font-family: "Playfair Display", serif;
+  color: #111;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 1px;
+  line-height: 0.95;
+}
+.founder-title span {
+  display: block;                /* força quebra por linha */
+  font-size: 56px;               /* ajuste para ficar grande como no exemplo */
+  text-transform: uppercase;
+}
+
+/* texto explicativo */
+.founder-lead {
+  margin: 0;
+  font-family: "Lora", serif;
+  color: #333;
+  font-size: 16px;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+/* botão/CTA */
+.founder-cta {
+  display: inline-block;
+  padding: 10px 18px;
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 4px;
+  margin-top: 8px;
+  letter-spacing: .6px;
+}
+
+/* ajustes finos - deixar título mais compacto se for muito longo */
+.founder-title span:last-child {
+  font-size: 42px;
+}
 
 
 
@@ -581,6 +709,146 @@ h1 {
 }
 
 
+
+
+
+/* Seção ODS - Sustentabilidade */
+.sustMarca {
+    padding: 80px 20px;
+    background: #f8f9fa;
+}
+
+.ods-title {
+    text-align: center;
+    font-family: "Playfair Display", serif;
+    font-size: 40px;
+    color: #333;
+    margin-bottom: 60px;
+    position: relative;
+}
+
+.ods-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  /* Força 4 colunas no desktop para manter os 4 cards em uma linha */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  padding: 0 15px;
+  /* garante que cada célula do grid ocupe a mesma altura disponível */
+  grid-auto-rows: 1fr;
+  align-items: stretch;
+}
+
+.ods-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  /* transforma o card em flex para que possamos distribuir título/texto e forçar mesma altura */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.ods-card:hover {
+  transform: translateY(-5px);
+}
+
+.ods-image {
+  width: 100%;
+  /* altura fixa da imagem dentro do card; como o card é flex column, a imagem não estica o conteúdo do texto */
+  flex: 0 0 220px;
+  overflow: hidden;
+}
+
+.ods-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  display: block;
+}
+
+.ods-card:hover .ods-image img {
+  transform: scale(1.05);
+}
+
+.ods-card h3 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  color: #333;
+  padding: 20px 20px 10px;
+  margin: 0;
+  font-weight: 700;
+}
+
+.ods-card p {
+  padding: 0 20px 20px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #666;
+  margin: 0;
+  /* permite que o parágrafo ocupe o espaço restante e alinhe a base dos cards */
+  flex: 1 1 auto;
+}
+
+/* Cores específicas para cada ODS */
+.ods-5 { background: #FF3A21; }
+.ods-8 { background: #A21942; }
+.ods-9 { background: #FD6925; }
+.ods-12 { background: #BF8B2E; }
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .ods-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .ods-title {
+        font-size: 32px;
+        margin-bottom: 40px;
+    }
+    
+    .sustMarca {
+        padding: 40px 15px;
+    }
+    
+    .ods-card h3 {
+        font-size: 16px;
+    }
+    
+    .ods-card p {
+        font-size: 13px;
+    }
+}
+
+/* Objetivos */
+
+
+  .founder-hero {
+    flex-direction: column;
+    gap: 18px;
+    margin: 24px auto;
+  }
+  .founder-hero__image {
+    width: 100%;
+    flex: 0 0 auto;
+    height: 360px;
+    border-radius: 6px;
+  }
+  .founder-hero__content {
+    width: 100%;
+    flex: 0 0 auto;
+  }
+  .founder-title span {
+    font-size: 36px;
+    line-height: 1;
+  }
+  .founder-title span:last-child { font-size: 30px; }
+  .founder-lead { font-size: 15px; line-height: 1.6; text-align: left; }
 
 
 
